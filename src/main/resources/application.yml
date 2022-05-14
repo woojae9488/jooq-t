@@ -1,0 +1,27 @@
+spring:
+  profiles:
+    active: local
+    include:
+      - datasource
+
+  application:
+    name: jooq-t
+
+  mvc:
+    throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: false
+
+server:
+  forward-headers-strategy: native
+  port: 8010
+
+management:
+  endpoints:
+    web:
+      base-path: /app-status
+      exposure:
+        include: metrics, health, cache
+  server:
+    port: 8011
