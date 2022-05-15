@@ -1,10 +1,11 @@
 package com.kwj.jooqt.infra;
 
 import com.kwj.jooqt.domain.Publisher;
-import com.kwj.jooqt.domain.generated.public_.tables.JPublisher;
 import lombok.RequiredArgsConstructor;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Repository;
+
+import static com.kwj.jooqt.domain.generated.public_.tables.Publisher.PUBLISHER;
 
 @Repository
 @RequiredArgsConstructor
@@ -14,8 +15,8 @@ public class PublisherRepository {
 
     public Publisher selectById(int id) {
         return dslContext.select()
-                .from(JPublisher.PUBLISHER)
-                .where(JPublisher.PUBLISHER.ID.eq(id))
+                .from(PUBLISHER)
+                .where(PUBLISHER.ID.eq(id))
                 .fetchOneInto(Publisher.class);
     }
 

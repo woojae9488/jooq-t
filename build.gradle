@@ -60,7 +60,7 @@ jooq {
                 }
                 generator {
                     strategy {
-                        name = 'org.jooq.codegen.example.JPrefixGeneratorStrategy'
+                        name = 'org.jooq.codegen.DefaultGeneratorStrategy'
                     }
                     database {
                         name = 'org.jooq.meta.h2.H2Database'
