@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 import static com.kwj.jooqt.domain.generated.public_.tables.Publisher.PUBLISHER;
 
 @Repository
@@ -18,6 +20,12 @@ public class PublisherRepository {
                 .from(PUBLISHER)
                 .where(PUBLISHER.ID.eq(id))
                 .fetchOneInto(Publisher.class);
+    }
+
+    public List<Publisher> selectAll() {
+        return dslContext.select()
+                .from(PUBLISHER)
+                .fetchInto(Publisher.class);
     }
 
 }
