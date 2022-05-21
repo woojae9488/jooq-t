@@ -1,20 +1,18 @@
 package com.kwj.jooqt.domain;
 
+import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
-@NoArgsConstructor
 @Getter
-@Setter
+@Builder
 @ToString
 public class Publisher {
 
-    private Integer id;
+    private final Integer id;
 
-    private String name;
+    private final String name;
 
-    private String address;
+    private final String address;
 
 }
