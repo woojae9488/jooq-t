@@ -41,7 +41,6 @@ public class AuthorRepository {
                         .from(AUTHOR)
                         .join(BOOK).on(AUTHOR.ID.eq(BOOK.AUTHOR_ID))
                         .where(AUTHOR.ID.eq(id))
-                        .stream()
                         .collect(AuthorCollectors.authorBooksMapCollector),
                 id
         );
@@ -52,7 +51,6 @@ public class AuthorRepository {
                 .select(BOOK.fields())
                 .from(AUTHOR)
                 .join(BOOK).on(AUTHOR.ID.eq(BOOK.AUTHOR_ID))
-                .stream()
                 .collect(AuthorCollectors.authorBooksMapCollector);
     }
 

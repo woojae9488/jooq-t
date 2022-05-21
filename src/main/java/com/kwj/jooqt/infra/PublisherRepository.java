@@ -46,7 +46,6 @@ public class PublisherRepository {
                         .join(AUTHOR).on(PUBLISHER.ID.eq(AUTHOR.PUBLISHER_ID))
                         .join(BOOK).on(AUTHOR.ID.eq(BOOK.AUTHOR_ID))
                         .where(PUBLISHER.ID.eq(id))
-                        .stream()
                         .collect(PublisherCollectors.publisherPerformanceMapCollector),
                 id
         );
@@ -59,7 +58,6 @@ public class PublisherRepository {
                 .from(PUBLISHER)
                 .join(AUTHOR).on(PUBLISHER.ID.eq(AUTHOR.PUBLISHER_ID))
                 .join(BOOK).on(AUTHOR.ID.eq(BOOK.AUTHOR_ID))
-                .stream()
                 .collect(PublisherCollectors.publisherPerformanceMapCollector);
     }
 
