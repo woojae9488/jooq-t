@@ -3,6 +3,7 @@ spring:
     active: local
     include:
       - datasource
+      - logging
 
   application:
     name: jooq-t
