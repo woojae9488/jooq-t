@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-@Sql("classpath:/sql/jooq_test_init.sql")
+@Sql("classpath:sql/jooq_test_init.sql")
 class BookRepositoryTests {
 
     @Autowired
