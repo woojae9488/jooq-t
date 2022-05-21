@@ -6,15 +6,16 @@ import org.jooq.Record;
 
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static com.kwj.jooqt.domain.generated.public_.tables.Author.AUTHOR;
 import static com.kwj.jooqt.domain.generated.public_.tables.Book.BOOK;
 
-public class AuthorRepositoryCollector {
+public class AuthorCollectors {
 
-    public static Collector<? super Record, ?, LinkedHashMap<AuthorBooksKey, List<Book>>>
+    public static Collector<? super Record, ?, Map<AuthorBooksKey, List<Book>>>
             authorBooksMapCollector = Collectors.groupingBy(
             r -> new AuthorBooksKey(
                     r.getValue(AUTHOR.ID),

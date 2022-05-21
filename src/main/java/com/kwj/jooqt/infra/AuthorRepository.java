@@ -3,7 +3,7 @@ package com.kwj.jooqt.infra;
 import com.kwj.jooqt.domain.Author;
 import com.kwj.jooqt.domain.Book;
 import com.kwj.jooqt.domain.value.AuthorBooksKey;
-import com.kwj.jooqt.infra.collector.AuthorRepositoryCollector;
+import com.kwj.jooqt.infra.collector.AuthorCollectors;
 import com.kwj.jooqt.util.JooqRecordHelper;
 import lombok.RequiredArgsConstructor;
 import org.jooq.DSLContext;
@@ -36,26 +36,26 @@ public class AuthorRepository {
 
     public Map.Entry<AuthorBooksKey, List<Book>> selectAuthorBooksEntryById(int id) {
         return JooqRecordHelper.firstEntry(
-                dslContext.select(AUTHOR.ID, AUTHOR.PUBLISHER_ID, AUTHOR.NAME)
+                dslContext.select(AUTHOR.ID, AUTHOR.NAME)
                         .select(BOOK.fields())
                         .from(AUTHOR)
                         .join(BOOK).on(AUTHOR.ID.eq(BOOK.AUTHOR_ID))
                         .where(AUTHOR.ID.eq(id))
                         .fetch()
                         .stream()
-                        .collect(AuthorRepositoryCollector.authorBooksMapCollector),
+                        .collect(AuthorCollectors.authorBooksMapCollector),
                 id
         );
     }
 
     public Map<AuthorBooksKey, List<Book>> selectAllAuthorBooksMap() {
-        return dslContext.select(AUTHOR.ID, AUTHOR.PUBLISHER_ID, AUTHOR.NAME)
+        return dslContext.select(AUTHOR.ID, AUTHOR.NAME)
                 .select(BOOK.fields())
                 .from(AUTHOR)
                 .join(BOOK).on(AUTHOR.ID.eq(BOOK.AUTHOR_ID))
                 .fetch()
                 .stream()
-                .collect(AuthorRepositoryCollector.authorBooksMapCollector);
+                .collect(AuthorCollectors.authorBooksMapCollector);
     }
 
 }
