@@ -4,7 +4,7 @@ import com.kwj.jooqt.domain.Book;
 import com.kwj.jooqt.domain.Publisher;
 import com.kwj.jooqt.domain.value.AuthorBooksKey;
 import com.kwj.jooqt.domain.value.PublisherPerformanceKey;
-import com.kwj.jooqt.infra.collector.PublisherCollectors;
+import com.kwj.jooqt.infra.binder.PublisherBinders;
 import com.kwj.jooqt.util.JooqRecordHelper;
 import lombok.RequiredArgsConstructor;
 import org.jooq.DSLContext;
@@ -46,7 +46,7 @@ public class PublisherRepository {
                         .join(AUTHOR).on(PUBLISHER.ID.eq(AUTHOR.PUBLISHER_ID))
                         .join(BOOK).on(AUTHOR.ID.eq(BOOK.AUTHOR_ID))
                         .where(PUBLISHER.ID.eq(id))
-                        .collect(PublisherCollectors.publisherPerformanceMapCollector),
+                        .collect(PublisherBinders.publisherPerformanceMapCollector),
                 id
         );
     }
@@ -58,7 +58,7 @@ public class PublisherRepository {
                 .from(PUBLISHER)
                 .join(AUTHOR).on(PUBLISHER.ID.eq(AUTHOR.PUBLISHER_ID))
                 .join(BOOK).on(AUTHOR.ID.eq(BOOK.AUTHOR_ID))
-                .collect(PublisherCollectors.publisherPerformanceMapCollector);
+                .collect(PublisherBinders.publisherPerformanceMapCollector);
     }
 
 }

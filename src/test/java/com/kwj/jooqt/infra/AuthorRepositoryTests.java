@@ -30,7 +30,7 @@ class AuthorRepositoryTests {
                 () -> assertEquals(1, author.getId()),
                 () -> assertEquals(1, author.getPublisherId()),
                 () -> assertEquals("aut_1", author.getName()),
-                () -> assertEquals("20000101", author.getBirthday()),
+                () -> assertEquals("2000-01-01", author.getBirthday()),
                 () -> assertEquals('M', author.getGender())
         );
     }
@@ -47,7 +47,7 @@ class AuthorRepositoryTests {
                 () -> assertEquals(1, firstAuthor.getId()),
                 () -> assertEquals(1, firstAuthor.getPublisherId()),
                 () -> assertEquals("aut_1", firstAuthor.getName()),
-                () -> assertEquals("20000101", firstAuthor.getBirthday()),
+                () -> assertEquals("2000-01-01", firstAuthor.getBirthday()),
                 () -> assertEquals('M', firstAuthor.getGender())
         );
     }
